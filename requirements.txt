@@ -1,0 +1,14 @@
+# VANGUARDDD RunBook Dependencies
+
+# Web scraping
+selenium>=4.0.0
+
+# Data processing
+pandas>=2.0.0
+openpyxl>=3.0.0
+
+# Date/time utilities (built-in, but listed for reference)
+# datetime
+# json
+# os
+# logging
