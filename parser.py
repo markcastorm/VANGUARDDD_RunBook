@@ -233,18 +233,28 @@ class VanguardDDParser:
     def save_master_data(self, df):
         """
         Save updated master data file.
-
-        Args:
-            df: pandas DataFrame to save
+        Normalises column 0 so every date cell is a plain YYYY-MM-DD string
+        — prevents Excel from storing timezone-aware datetimes.
         """
 
         try:
-            # Ensure directory exists
             os.makedirs(os.path.dirname(config.MASTER_DATA_FILE), exist_ok=True)
 
-            # Save to Excel without index or header
-            df.to_excel(config.MASTER_DATA_FILE, index=False, header=False)
+            # Normalise col 0: convert any date/datetime to YYYY-MM-DD string
+            def _norm(val):
+                if val is None or (isinstance(val, float) and pd.isna(val)):
+                    return val
+                if hasattr(val, 'strftime'):
+                    return val.strftime(config.DATE_FORMAT_OUTPUT)
+                s = str(val)
+                # Truncate datetime strings like '2026-01-27 00:00:00'
+                if len(s) > 10 and s[10] in (' ', 'T'):
+                    return s[:10]
+                return val
 
+            df[0] = df[0].apply(_norm)
+
+            df.to_excel(config.MASTER_DATA_FILE, index=False, header=False)
             self.logger.info(f"Saved master data: {len(df)} rows")
 
         except Exception as e:
@@ -286,6 +296,14 @@ class VanguardDDParser:
 
         return None
 
+    def _date_to_str(self, d):
+        """Normalise any date/datetime/string to YYYY-MM-DD string."""
+        if d is None:
+            return None
+        if hasattr(d, 'strftime'):
+            return d.strftime(config.DATE_FORMAT_OUTPUT)
+        return str(d)[:10]  # truncate ISO strings with time component
+
     def update_master_with_forward_fill(self, df, today, durations):
         """
         Forward-fill: Add today's row with previous day's values.
@@ -301,13 +319,16 @@ class VanguardDDParser:
 
         self.logger.info("SCENARIO 1: FORWARD-FILL (no change detected)")
 
-        # Create new row
-        new_row = [today] + [durations.get(col['code']) for col in config.OUTPUT_COLUMNS]
+        date_str = self._date_to_str(today)
 
-        # Append to DataFrame
+        # Guard: skip if today's row already exists (e.g. pipeline ran twice today)
+        if self.find_date_row_index(df, today) is not None:
+            self.logger.info(f"Row for {date_str} already exists — skipping duplicate")
+            return df
+
+        new_row = [date_str] + [durations.get(col['code']) for col in config.OUTPUT_COLUMNS]
         df.loc[len(df)] = new_row
-
-        self.logger.info(f"Added row for {today}: {new_row[1:]}")
+        self.logger.info(f"Added row for {date_str}: {new_row[1:]}")
 
         return df
 
@@ -332,8 +353,8 @@ class VanguardDDParser:
 
         if start_idx is None:
             self.logger.warning(f"Could not find {as_of_date} in master data - appending from today")
-            # Just add today's row
-            new_row = [today] + [durations.get(col['code']) for col in config.OUTPUT_COLUMNS]
+            date_str = self._date_to_str(today)
+            new_row = [date_str] + [durations.get(col['code']) for col in config.OUTPUT_COLUMNS]
             df.loc[len(df)] = new_row
             return df
 
@@ -364,9 +385,10 @@ class VanguardDDParser:
             while current_date <= today:
                 # Skip weekends (assuming business days only)
                 if current_date.weekday() < 5:  # Monday=0, Sunday=6
-                    new_row = [current_date] + [durations.get(col['code']) for col in config.OUTPUT_COLUMNS]
+                    date_str = self._date_to_str(current_date)
+                    new_row = [date_str] + [durations.get(col['code']) for col in config.OUTPUT_COLUMNS]
                     df.loc[len(df)] = new_row
-                    self.logger.info(f"Added row for {current_date}: {new_row[1:]}")
+                    self.logger.info(f"Added row for {date_str}: {new_row[1:]}")
 
                 current_date += timedelta(days=1)
 

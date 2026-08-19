@@ -8,11 +8,16 @@ from datetime import datetime
 # DATA SOURCE CONFIGURATION
 # =============================================================================
 
-# URLs for the three Vanguard ETF products
+# Base URL pattern — tickers are appended as lowercase by the scraper.
+# Using /overview/ ensures the Angular app lands on the correct tab and
+# the Portfolio Composition section renders consistently across all tickers.
+VANGUARD_BASE_URL = 'https://investor.vanguard.com/etf/profile/overview'
+
+# Kept for backwards-compatibility references; scraper builds URLs dynamically.
 URLS = {
-    'VCIT': 'https://investor.vanguard.com/etf/profile/overview/vcit',
-    'VCSH': 'https://investor.vanguard.com/etf/profile/VCSH',
-    'VCLT': 'https://investor.vanguard.com/etf/profile/VCLT'
+    'VCIT': f'{VANGUARD_BASE_URL}/vcit',
+    'VCSH': f'{VANGUARD_BASE_URL}/vcsh',
+    'VCLT': f'{VANGUARD_BASE_URL}/vclt',
 }
 
 PROVIDER_NAME = 'Vanguard Personal Investors'
@@ -180,9 +185,17 @@ LOG_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 HEADLESS_MODE = True
 DEBUG_MODE = True
-WAIT_TIMEOUT = 20
+
+# Timeouts (seconds) — used with WebDriverWait; no bare time.sleep() in scraper
+PAGE_LOAD_TIMEOUT = 60       # Selenium page-load hard limit
+ELEMENT_WAIT_TIMEOUT = 30    # Wait for Angular to bootstrap per attempt (refresh gives another 30s)
+TABLE_WAIT_TIMEOUT = 15      # Wait for symbolAvgDuration after scroll
+
+# Legacy aliases (no longer used by the scraper but kept so any external code
+# that references them does not break)
+WAIT_TIMEOUT = PAGE_LOAD_TIMEOUT
 PAGE_LOAD_DELAY = 3
-SCROLL_DELAY = 2  # Time to wait after scrolling to Portfolio Composition section
+SCROLL_DELAY = 2
 
 # =============================================================================
 # OUTPUT CONFIGURATION

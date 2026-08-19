@@ -1,0 +1,174 @@
+2026-08-17 16:37:47 - root - INFO - ======================================================================
+2026-08-17 16:37:47 - root - INFO - Logging initialized
+2026-08-17 16:37:47 - root - INFO - Log file: ./logs\20260817_163744\vanguarddd_20260817_163744.log
+2026-08-17 16:37:47 - root - INFO - Log level: DEBUG
+2026-08-17 16:37:47 - root - INFO - ======================================================================
+2026-08-17 16:37:47 - selenium.webdriver.common.selenium_manager - DEBUG - Selenium Manager binary found at: C:\Users\Mark Castro\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-08-17 16:37:47 - selenium.webdriver.common.selenium_manager - DEBUG - Executing process: C:\Users\Mark Castro\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --language-binding python --output json
+2026-08-17 16:37:49 - selenium.webdriver.common.selenium_manager - DEBUG - Sending stats to Plausible: Props { browser: "chrome", browser_version: "", os: "windows", arch: "amd64", lang: "python", selenium_version: "4.27" }
+2026-08-17 16:37:49 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver not found in PATH
+2026-08-17 16:37:49 - selenium.webdriver.common.selenium_manager - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-08-17 16:37:49 - selenium.webdriver.common.selenium_manager - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-08-17 16:37:49 - selenium.webdriver.common.selenium_manager - DEBUG - Output: "\r\r\n\r\r\nVersion=151.0.7922.138\r\r\n\r\r\n\r\r\n\r"
+2026-08-17 16:37:49 - selenium.webdriver.common.selenium_manager - DEBUG - Detected browser: chrome 151.0.7922.138
+2026-08-17 16:37:49 - selenium.webdriver.common.selenium_manager - DEBUG - Discovering versions from https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json
+2026-08-17 16:37:49 - selenium.webdriver.common.selenium_manager - DEBUG - Required driver: chromedriver 151.0.7922.138
+2026-08-17 16:37:49 - selenium.webdriver.common.selenium_manager - DEBUG - chromedriver 151.0.7922.138 already in the cache
+2026-08-17 16:37:49 - selenium.webdriver.common.selenium_manager - DEBUG - Driver path: C:\Users\Mark Castro\.cache\selenium\chromedriver\win64\151.0.7922.138\chromedriver.exe
+2026-08-17 16:37:49 - selenium.webdriver.common.selenium_manager - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-08-17 16:37:49 - selenium.webdriver.common.service - DEBUG - Started executable: `C:\Users\Mark Castro\.cache\selenium\chromedriver\win64\151.0.7922.138\chromedriver.exe` in a child process with pid: 3772 using 0 to output -3
+2026-08-17 16:37:50 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'browserVersion': None, 'goog:chromeOptions': {'extensions': [], 'binary': 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'args': ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080', '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36']}}}}
+2026-08-17 16:37:50 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:49577
+2026-08-17 16:37:51 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session HTTP/1.1" 200 0
+2026-08-17 16:37:51 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"151.0.7922.138","chrome":{"chromedriverVersion":"151.0.7922.138 (41fa82442390a4d4456c78f2d69a832d5720cb27-refs/branch-heads/7922@{#2891})","userDataDir":"C:\\Users\\MARKCA~1\\AppData\\Local\\Temp\\scoped_dir3772_156330651"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:49583"},"goog:processID":5016,"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"03b5dc5c13e3179f2361d8dc7072b179"}} | headers=HTTPHeaderDict({'Content-Length': '907', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:37:51 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:37:51 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/timeouts {'pageLoad': 20000}
+2026-08-17 16:37:51 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/timeouts HTTP/1.1" 200 0
+2026-08-17 16:37:51 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:37:51 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:37:51 - scraper - INFO - Chrome driver initialized
+2026-08-17 16:37:51 - scraper - INFO - 
+======================================================================
+2026-08-17 16:37:51 - scraper - INFO - Scraping VCIT: https://investor.vanguard.com/etf/profile/overview/vcit
+2026-08-17 16:37:51 - scraper - INFO - ======================================================================
+2026-08-17 16:37:51 - scraper - INFO - Navigating to https://investor.vanguard.com/etf/profile/overview/vcit
+2026-08-17 16:37:51 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/url {'url': 'https://investor.vanguard.com/etf/profile/overview/vcit'}
+2026-08-17 16:38:05 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/url HTTP/1.1" 200 0
+2026-08-17 16:38:05 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:05 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:08 - scraper - INFO - Page loaded successfully
+2026-08-17 16:38:08 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element {'using': 'css selector', 'value': 'h1.ticker span.fund-name'}
+2026-08-17 16:38:08 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/element HTTP/1.1" 200 0
+2026-08-17 16:38:08 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.D914D75E4150DCAA8B29CD43B591B9A2.e.73"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:08 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:08 - selenium.webdriver.remote.remote_connection - DEBUG - GET http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element/f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.D914D75E4150DCAA8B29CD43B591B9A2.e.73/text {}
+2026-08-17 16:38:09 - urllib3.connectionpool - DEBUG - http://localhost:49577 "GET /session/03b5dc5c13e3179f2361d8dc7072b179/element/f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.D914D75E4150DCAA8B29CD43B591B9A2.e.73/text HTTP/1.1" 200 0
+2026-08-17 16:38:09 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":"Vanguard Intermediate-Term Corporate Bond ETF"} | headers=HTTPHeaderDict({'Content-Length': '57', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:09 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:09 - scraper - INFO - Verified fund name: Vanguard Intermediate-Term Corporate Bond ETF
+2026-08-17 16:38:09 - scraper - INFO - Scrolling to Portfolio Composition section...
+2026-08-17 16:38:09 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element {'using': 'css selector', 'value': 'section#portfolio-composition'}
+2026-08-17 16:38:09 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/element HTTP/1.1" 200 0
+2026-08-17 16:38:09 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.D914D75E4150DCAA8B29CD43B591B9A2.e.74"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:09 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:09 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/execute/sync {'script': "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.D914D75E4150DCAA8B29CD43B591B9A2.e.74'}]}
+2026-08-17 16:38:09 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/execute/sync HTTP/1.1" 200 0
+2026-08-17 16:38:09 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:09 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:11 - scraper - INFO - Scrolled to Portfolio Composition section
+2026-08-17 16:38:11 - scraper - INFO - Extracting 'as of' date...
+2026-08-17 16:38:11 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element {'using': 'css selector', 'value': 'p.date.rps-paragraph-two'}
+2026-08-17 16:38:12 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/element HTTP/1.1" 200 0
+2026-08-17 16:38:12 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.D914D75E4150DCAA8B29CD43B591B9A2.e.77"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:12 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:12 - selenium.webdriver.remote.remote_connection - DEBUG - GET http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element/f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.D914D75E4150DCAA8B29CD43B591B9A2.e.77/text {}
+2026-08-17 16:38:13 - urllib3.connectionpool - DEBUG - http://localhost:49577 "GET /session/03b5dc5c13e3179f2361d8dc7072b179/element/f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.D914D75E4150DCAA8B29CD43B591B9A2.e.77/text HTTP/1.1" 200 0
+2026-08-17 16:38:13 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":"as of 07/31/2026"} | headers=HTTPHeaderDict({'Content-Length': '28', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:13 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:13 - scraper - DEBUG - Raw date text: as of 07/31/2026
+2026-08-17 16:38:13 - scraper - INFO - Found 'as of' date: 07/31/2026
+2026-08-17 16:38:13 - scraper - INFO - Extracting Average Duration for VCIT...
+2026-08-17 16:38:13 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element {'using': 'css selector', 'value': 'td[data-rpa-tag-id="symbolAvgDuration"]'}
+2026-08-17 16:38:13 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/element HTTP/1.1" 200 0
+2026-08-17 16:38:13 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.D914D75E4150DCAA8B29CD43B591B9A2.e.78"}} | headers=HTTPHeaderDict({'Content-Length': '126', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:13 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:13 - selenium.webdriver.remote.remote_connection - DEBUG - GET http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element/f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.D914D75E4150DCAA8B29CD43B591B9A2.e.78/text {}
+2026-08-17 16:38:13 - urllib3.connectionpool - DEBUG - http://localhost:49577 "GET /session/03b5dc5c13e3179f2361d8dc7072b179/element/f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.D914D75E4150DCAA8B29CD43B591B9A2.e.78/text HTTP/1.1" 200 0
+2026-08-17 16:38:13 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":"6.0 years"} | headers=HTTPHeaderDict({'Content-Length': '21', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:13 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:13 - scraper - INFO - Found Average Duration (RPA tag): 6.0 years
+2026-08-17 16:38:13 - scraper - INFO - Successfully scraped VCIT
+2026-08-17 16:38:13 - scraper - INFO - 
+======================================================================
+2026-08-17 16:38:13 - scraper - INFO - Scraping VCSH: https://investor.vanguard.com/etf/profile/VCSH
+2026-08-17 16:38:13 - scraper - INFO - ======================================================================
+2026-08-17 16:38:13 - scraper - INFO - Navigating to https://investor.vanguard.com/etf/profile/VCSH
+2026-08-17 16:38:13 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/url {'url': 'https://investor.vanguard.com/etf/profile/VCSH'}
+2026-08-17 16:38:15 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/url HTTP/1.1" 200 0
+2026-08-17 16:38:15 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:15 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:18 - scraper - INFO - Page loaded successfully
+2026-08-17 16:38:18 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element {'using': 'css selector', 'value': 'h1.ticker span.fund-name'}
+2026-08-17 16:38:21 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/element HTTP/1.1" 200 0
+2026-08-17 16:38:21 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.F4F9B070F2CA04824CED0F95B9B3BBC2.e.102"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:21 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:21 - selenium.webdriver.remote.remote_connection - DEBUG - GET http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element/f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.F4F9B070F2CA04824CED0F95B9B3BBC2.e.102/text {}
+2026-08-17 16:38:21 - urllib3.connectionpool - DEBUG - http://localhost:49577 "GET /session/03b5dc5c13e3179f2361d8dc7072b179/element/f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.F4F9B070F2CA04824CED0F95B9B3BBC2.e.102/text HTTP/1.1" 200 0
+2026-08-17 16:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":"Vanguard Short-Term Corporate Bond ETF"} | headers=HTTPHeaderDict({'Content-Length': '50', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:22 - scraper - INFO - Verified fund name: Vanguard Short-Term Corporate Bond ETF
+2026-08-17 16:38:22 - scraper - INFO - Scrolling to Portfolio Composition section...
+2026-08-17 16:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element {'using': 'css selector', 'value': 'section#portfolio-composition'}
+2026-08-17 16:38:22 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/element HTTP/1.1" 200 0
+2026-08-17 16:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.F4F9B070F2CA04824CED0F95B9B3BBC2.e.128"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/execute/sync {'script': "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.F4F9B070F2CA04824CED0F95B9B3BBC2.e.128'}]}
+2026-08-17 16:38:22 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/execute/sync HTTP/1.1" 200 0
+2026-08-17 16:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:22 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:24 - scraper - INFO - Scrolled to Portfolio Composition section
+2026-08-17 16:38:24 - scraper - INFO - Extracting 'as of' date...
+2026-08-17 16:38:24 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element {'using': 'css selector', 'value': 'p.date.rps-paragraph-two'}
+2026-08-17 16:38:24 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/element HTTP/1.1" 200 0
+2026-08-17 16:38:24 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.F4F9B070F2CA04824CED0F95B9B3BBC2.e.143"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:24 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:24 - selenium.webdriver.remote.remote_connection - DEBUG - GET http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element/f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.F4F9B070F2CA04824CED0F95B9B3BBC2.e.143/text {}
+2026-08-17 16:38:24 - urllib3.connectionpool - DEBUG - http://localhost:49577 "GET /session/03b5dc5c13e3179f2361d8dc7072b179/element/f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.F4F9B070F2CA04824CED0F95B9B3BBC2.e.143/text HTTP/1.1" 200 0
+2026-08-17 16:38:24 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":"as of 07/31/2026"} | headers=HTTPHeaderDict({'Content-Length': '28', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:24 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:24 - scraper - DEBUG - Raw date text: as of 07/31/2026
+2026-08-17 16:38:24 - scraper - INFO - Found 'as of' date: 07/31/2026
+2026-08-17 16:38:24 - scraper - INFO - Extracting Average Duration for VCSH...
+2026-08-17 16:38:24 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element {'using': 'css selector', 'value': 'td[data-rpa-tag-id="symbolAvgDuration"]'}
+2026-08-17 16:38:24 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/element HTTP/1.1" 200 0
+2026-08-17 16:38:24 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.F4F9B070F2CA04824CED0F95B9B3BBC2.e.144"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:24 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:24 - selenium.webdriver.remote.remote_connection - DEBUG - GET http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element/f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.F4F9B070F2CA04824CED0F95B9B3BBC2.e.144/text {}
+2026-08-17 16:38:24 - urllib3.connectionpool - DEBUG - http://localhost:49577 "GET /session/03b5dc5c13e3179f2361d8dc7072b179/element/f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.F4F9B070F2CA04824CED0F95B9B3BBC2.e.144/text HTTP/1.1" 200 0
+2026-08-17 16:38:24 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":"2.7 years"} | headers=HTTPHeaderDict({'Content-Length': '21', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:24 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:24 - scraper - INFO - Found Average Duration (RPA tag): 2.7 years
+2026-08-17 16:38:24 - scraper - INFO - Successfully scraped VCSH
+2026-08-17 16:38:24 - scraper - INFO - 
+======================================================================
+2026-08-17 16:38:24 - scraper - INFO - Scraping VCLT: https://investor.vanguard.com/etf/profile/VCLT
+2026-08-17 16:38:24 - scraper - INFO - ======================================================================
+2026-08-17 16:38:24 - scraper - INFO - Navigating to https://investor.vanguard.com/etf/profile/VCLT
+2026-08-17 16:38:24 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/url {'url': 'https://investor.vanguard.com/etf/profile/VCLT'}
+2026-08-17 16:38:27 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/url HTTP/1.1" 200 0
+2026-08-17 16:38:27 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:27 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:30 - scraper - INFO - Page loaded successfully
+2026-08-17 16:38:30 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element {'using': 'css selector', 'value': 'h1.ticker span.fund-name'}
+2026-08-17 16:38:30 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/element HTTP/1.1" 200 0
+2026-08-17 16:38:30 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.C09333FF8B17D8E6AA5DB083271191B6.e.167"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:30 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:30 - selenium.webdriver.remote.remote_connection - DEBUG - GET http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element/f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.C09333FF8B17D8E6AA5DB083271191B6.e.167/text {}
+2026-08-17 16:38:31 - urllib3.connectionpool - DEBUG - http://localhost:49577 "GET /session/03b5dc5c13e3179f2361d8dc7072b179/element/f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.C09333FF8B17D8E6AA5DB083271191B6.e.167/text HTTP/1.1" 200 0
+2026-08-17 16:38:31 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":"Vanguard Long-Term Corporate Bond ETF"} | headers=HTTPHeaderDict({'Content-Length': '49', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:31 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:31 - scraper - INFO - Verified fund name: Vanguard Long-Term Corporate Bond ETF
+2026-08-17 16:38:31 - scraper - INFO - Scrolling to Portfolio Composition section...
+2026-08-17 16:38:31 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element {'using': 'css selector', 'value': 'section#portfolio-composition'}
+2026-08-17 16:38:31 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/element HTTP/1.1" 200 0
+2026-08-17 16:38:31 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.C09333FF8B17D8E6AA5DB083271191B6.e.181"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:31 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:31 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/execute/sync {'script': "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.F01ABCDD6F700B0D5ADA7126F0DEAED8.d.C09333FF8B17D8E6AA5DB083271191B6.e.181'}]}
+2026-08-17 16:38:31 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/execute/sync HTTP/1.1" 200 0
+2026-08-17 16:38:31 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:31 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:33 - scraper - INFO - Scrolled to Portfolio Composition section
+2026-08-17 16:38:33 - scraper - INFO - Extracting 'as of' date...
+2026-08-17 16:38:33 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179/element {'using': 'css selector', 'value': 'p.date.rps-paragraph-two'}
+2026-08-17 16:38:34 - urllib3.connectionpool - DEBUG - http://localhost:49577 "POST /session/03b5dc5c13e3179f2361d8dc7072b179/element HTTP/1.1" 404 0
+2026-08-17 16:38:34 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=404 | data={"value":{"error":"no such element","message":"no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"p.date.rps-paragraph-two\"}\n  (Session info: chrome=151.0.7922.138)","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff71db2abb5+151b5]\n\tchromedriver!GetHandleVerifier [0x7ff71db2ac10+15210]\n\tchromedriver!(No symbol) [0x7ff71d655d6d]\n\tchromedriver!(No symbol) [0x7ff71d6b1289]\n\tchromedriver!(No symbol) [0x7ff71d6b158c]\n\tchromedriver!(No symbol) [0x7ff71d702027]\n\tchromedriver!(No symbol) [0x7ff71d6fec0b]\n\tchromedriver!(No symbol) [0x7ff71d6a37cc]\n\tchromedriver!(No symbol) [0x7ff71d6a46f3]\n\tchromedriver!GetHandleVerifier [0x7ff71e14b79b+635d9b]\n\tchromedriver!GetHandleVerifier [0x7ff71e145ac6+6300c6]\n\tchromedriver!GetHandleVerifier [0x7ff71e16bcee+6562ee]\n\tchromedriver!GetHandleVerifier [0x7ff71db48ffe+335fe]\n\tchromedriver!GetHandleVerifier [0x7ff71db5147c+3ba7c]\n\tchromedriver!GetHandleVerifier [0x7ff71db34d64+1f364]\n\tchromedriver!GetHandleVerifier [0x7ff71db34ef4+1f4f4]\n\tchromedriver!GetHandleVerifier [0x7ff71db17d97+2397]\n\tKERNEL32!BaseThreadInitThunk [0x7ffe474253e0+10]\n\tntdll!RtlUserThreadStart [0x7ffe4830485b+2b]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1208', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:34 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:34 - scraper - ERROR - Could not find 'as of' date element
+2026-08-17 16:38:34 - scraper - ERROR - Failed to extract 'as of' date for VCLT
+2026-08-17 16:38:34 - scraper - ERROR - Required product VCLT failed - aborting
+2026-08-17 16:38:34 - selenium.webdriver.remote.remote_connection - DEBUG - DELETE http://localhost:49577/session/03b5dc5c13e3179f2361d8dc7072b179 {}
+2026-08-17 16:38:44 - urllib3.connectionpool - DEBUG - http://localhost:49577 "DELETE /session/03b5dc5c13e3179f2361d8dc7072b179 HTTP/1.1" 200 0
+2026-08-17 16:38:44 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-17 16:38:44 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-17 16:38:48 - scraper - INFO - Browser closed
+2026-08-17 16:38:48 - __main__ - ERROR - Failed to scrape ETF data
