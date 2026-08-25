@@ -2,18 +2,11 @@
 
 **Vanguard ETF Average Duration Data Collection System**
 
-Automated data collection system for tracking Average Duration metrics from 3 Vanguard Corporate Bond ETFs with intelligent forward-filling and backfilling logic.
+Automated daily pipeline that scrapes bond duration data from Vanguard's website for three corporate bond ETFs, maintains a cumulative historical master file, and applies intelligent forward-fill / backfill logic to handle irregular data updates.
 
 ---
 
-## 📊 Overview
-
-This runbook scrapes daily Average Duration data from Vanguard ETF pages and maintains a cumulative master data file with sophisticated data management:
-
-- **Forward-filling**: When data hasn't changed, uses previous day's values
-- **Backfilling**: When "as of" date or values change, historically corrects master data from the "as of" date onwards
-
-### Tracked Products
+## Tracked Products
 
 | Ticker | Fund Name | Metric |
 |--------|-----------|--------|
@@ -23,321 +16,212 @@ This runbook scrapes daily Average Duration data from Vanguard ETF pages and mai
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 VANGUARDDD_RunBook/
-├── config.py              # Configuration (URLs, selectors, column mappings)
-├── logger_setup.py        # Logging configuration
-├── scraper.py             # Web scraping (Selenium)
-├── parser.py              # Forward/backfill logic
-├── file_generator.py      # Excel file generation
-├── orchestrator.py        # Main execution coordinator
+├── orchestrator.py        # Entry point — chains all steps
+├── scraper.py             # Playwright browser automation
+├── parser.py              # Forward/backfill decision logic
+├── file_generator.py      # Excel + ZIP output generation
+├── config.py              # All configuration (URLs, selectors, paths)
+├── logger_setup.py        # Logging bootstrap
 ├── Master/
-│   ├── Master_DATA.xlsx   # Cumulative master data file
-│   └── tracking_state.json # Tracks last known "as of" date and values
+│   ├── Master_DATA.xlsx   # Cumulative historical data (never delete)
+│   └── tracking_state.json # Last known as-of date + values
 ├── output/
-│   ├── <timestamp>/       # Timestamped output folders
-│   └── latest/            # Always contains most recent files
-└── logs/                  # Execution logs
+│   ├── VANGUARDDD_DATA_<timestamp>.xlsx
+│   ├── VANGUARDDD_META_<timestamp>.xlsx
+│   ├── VANGUARDDD_<timestamp>.zip
+│   └── latest/            # Always contains most recent run
+└── logs/
+    └── vanguarddd_<timestamp>.log
 ```
 
 ---
 
-## 🔄 Data Update Logic
-
-### The Theory
-
-Vanguard updates their "as of" dates irregularly. The system tracks TWO variables:
-1. **"as of" date** - When the data is valid from
-2. **Duration values** - The actual duration numbers
-
-### Decision Tree
-
-```python
-IF scraped_as_of_date == last_as_of_date AND scraped_values == last_values:
-    → SCENARIO 1: FORWARD-FILL
-    Action: Add today's row with same values
-
-ELIF scraped_as_of_date != last_as_of_date:
-    → SCENARIO 2: DATE CHANGED (BACKFILL)
-    Action: Update from as_of_date to today with new values
-
-ELIF scraped_values != last_values:
-    → SCENARIO 3: VALUES CHANGED (BACKFILL)
-    Action: Update from as_of_date to today with corrected values
-```
-
-### Example Scenarios
-
-#### Scenario 1: No Change
-```
-Run on 2026-01-27
-Scraped: "as of 12/31/2025", values = [6.0, 2.6, 12.1]
-Last:    "as of 12/31/2025", values = [6.0, 2.6, 12.1]
-
-→ Forward-fill: Add row 2026-01-27 with [6.0, 2.6, 12.1]
-```
-
-#### Scenario 2: Date Changed
-```
-Run on 2026-01-27
-Scraped: "as of 01/15/2026", values = [6.2, 2.7, 12.3]
-Last:    "as of 12/31/2025", values = [6.0, 2.6, 12.1]
-
-→ Backfill from 01/15/2026:
-   2026-01-15 | 6.2 | 2.7 | 12.3  ← Updated
-   2026-01-16 | 6.2 | 2.7 | 12.3  ← Updated
-   ...
-   2026-01-26 | 6.2 | 2.7 | 12.3  ← Updated
-   2026-01-27 | 6.2 | 2.7 | 12.3  ← New row
-```
-
-#### Scenario 3: Values Changed
-```
-Run on 2026-01-27
-Scraped: "as of 12/31/2025", values = [6.2, 2.7, 12.3]
-Last:    "as of 12/31/2025", values = [6.0, 2.6, 12.1]
-
-→ Backfill from 12/31/2025:
-   Apply corrected values from 12/31/2025 onwards to today
-```
-
----
-
-## 🚀 Installation
-
-### Prerequisites
+## Installation
 
 ```bash
-pip install selenium pandas openpyxl
+pip install playwright playwright-stealth pandas openpyxl
+playwright install chromium
 ```
 
-Download ChromeDriver: https://chromedriver.chromium.org/
-
-### Setup
-
-1. **Verify Master Data File exists:**
-   ```
-   D:\Projects\SIMBA-RUNBOOKS\VANGUARDDD_RunBook\Master\Master_DATA.xlsx
-   ```
-
-2. **Configure headless mode (optional):**
-   Edit [config.py:161](D:\Projects\SIMBA-RUNBOOKS\VANGUARDDD_RunBook\config.py#L161):
-   ```python
-   HEADLESS_MODE = True  # Set False to see browser
-   ```
+> **Note:** Playwright uses its own bundled Chromium — your system Chrome version is irrelevant. Chrome auto-updates cannot break this scraper.
 
 ---
 
-## ▶️ Usage
+## Usage
 
-### Run the Full Pipeline
+### Run the full pipeline
 
 ```bash
 python orchestrator.py
 ```
 
-### Test Individual Components
+### Run individual components (for debugging)
 
 ```bash
-# Test scraper only
-python scraper.py
-
-# Test parser only
-python parser.py
-
-# Test file generator only
-python file_generator.py
+python scraper.py        # Test extraction only (no file writes)
+python parser.py         # Test forward/backfill with mock data
+python file_generator.py # Regenerate output files from existing master
 ```
 
 ---
 
-## 📤 Output Files
+## How It Works
 
-### Generated Files (timestamped)
+### Browser Automation
+
+Playwright with `playwright-stealth` loads each ETF's portfolio page in two steps:
+1. Load the base URL → wait 10s for Angular SPA to bootstrap
+2. Navigate to `#portfolio-composition` hash → wait 6s for lazy-loaded section to render
+
+Stealth patches browser fingerprinting properties, bypassing Vanguard's bot detection.
+
+### Data Extraction
+
+For each ticker, two selectors are tried in order:
+
+| Priority | Selector | What it finds |
+|----------|----------|---------------|
+| Primary | `td[data-rpa-tag-id="symbolAvgDuration"]` | Average duration value |
+| Fallback | `tr.fixed-income` row scan → `td.row-header` matching "Average duration" | Same value via table |
+
+Date: `p.date.rps-paragraph-two` (fallback: `p.date`)
+
+### Forward/Backfill Logic
+
+Vanguard updates their "as of" date irregularly. The pipeline tracks the last known state in `tracking_state.json` and decides:
 
 ```
-output/<YYYYMMDD_HHMMSS>/
-├── VANGUARDDD_DATA_<timestamp>.xlsx   # Data file
-├── VANGUARDDD_META_<timestamp>.xlsx   # Metadata file
-└── VANGUARDDD_<timestamp>.zip         # ZIP archive
+IF scraped as_of_date == last AND values == last:
+    FORWARD-FILL — append today's row with same values
 
-output/latest/
-└── (copies of above files)            # Always most recent
+IF as_of_date changed OR values changed:
+    BACKFILL — update all rows from as_of_date onward, then append through today
 ```
 
-### Master Data File Structure
-
+#### Example — Forward-fill (most common)
 ```
-Row 0: [blank] | CODE1 | CODE2 | CODE3
-Row 1: [blank] | Description1 | Description2 | Description3
-Row 2+: DATE | VCIT_Duration | VCSH_Duration | VCLT_Duration
+Scraped: as of 07/31/2026, VCIT=6.0, VCSH=2.7, VCLT=11.8
+Last:    as of 07/31/2026, VCIT=6.0, VCSH=2.7, VCLT=11.8
+→ Append row for 2026-08-25: [6.0, 2.7, 11.8]
 ```
 
-### Tracking State File
-
-```json
-{
-  "as_of_date": "2025-12-31",
-  "durations": {
-    "VANGUARDDD.INTERMEDIATETERMCORPORATEBONDETF.AVGDURATION.B": 6.0,
-    "VANGUARDDD.SHORTTERMCORPORATEBONDETF.AVGDURATION.B": 2.6,
-    "VANGUARDDD.LONGTERMCORPORATEBONDETF.AVGDURATION.B": 12.1
-  },
-  "last_run_date": "2026-01-27",
-  "last_updated": "2026-01-27 10:30:45"
-}
+#### Example — Backfill (when Vanguard updates)
+```
+Scraped: as of 08/31/2026, VCIT=6.2, VCSH=2.8, VCLT=12.0
+Last:    as of 07/31/2026, VCIT=6.0, VCSH=2.7, VCLT=11.8
+→ Update all rows from 2026-08-31 onward with new values
+→ Append rows from last master date through today
 ```
 
 ---
 
-## 🔍 Debugging
+## Master Data File Structure
 
-### Enable Debug Mode
+`Master/Master_DATA.xlsx` — never delete this file.
 
-Edit [config.py:162](D:\Projects\SIMBA-RUNBOOKS\VANGUARDDD_RunBook\config.py#L162):
+```
+Row 0:  [blank]     | CODE (VCIT)    | CODE (VCSH)    | CODE (VCLT)
+Row 1:  [blank]     | Description... | Description... | Description...
+Row 2+: YYYY-MM-DD  | 6.0            | 2.7            | 11.8
+```
+
+Date range: `2024-02-29` to present (653+ rows as of 2026-08-25, business days only).
+
+---
+
+## Output Files
+
+Each run generates three files timestamped at run time:
+
+| File | Contents |
+|------|----------|
+| `VANGUARDDD_DATA_<ts>.xlsx` | Full master data (copy) |
+| `VANGUARDDD_META_<ts>.xlsx` | Metadata (codes, descriptions, units, provider info) |
+| `VANGUARDDD_<ts>.zip` | ZIP archive of both files |
+
+All files are also copied to `output/latest/` for easy access.
+
+---
+
+## Configuration
+
+Key settings in [config.py](config.py):
+
 ```python
-DEBUG_MODE = True
+HEADLESS_MODE = False      # True for unattended/scheduled runs
+DEBUG_MODE    = True       # Enables verbose DEBUG logging
+
+REQUIRE_ALL_PRODUCTS = True  # Abort if any ticker fails (recommended)
+
+MIN_DURATION_VALUE = 0.1   # Validation: reject durations outside this range
+MAX_DURATION_VALUE = 30.0
 ```
 
-### Check Logs
+---
 
-```
-logs/<YYYYMMDD_HHMMSS>/vanguarddd_<timestamp>.log
-```
+## Debugging
 
-### Common Issues
+### Common issues
 
 | Issue | Solution |
 |-------|----------|
-| **Scraper fails** | Check CSS selectors in `config.py` (Vanguard may change HTML) |
-| **Date not found** | Verify `date_text` selector in config |
-| **Duration not found** | Check `symbol_avg_duration` selector |
-| **Master file locked** | Close Excel if it's open |
-| **ChromeDriver error** | Update ChromeDriver to match Chrome version |
+| Scraper extracts nothing | Check selectors in `config.py` — Vanguard may have changed HTML |
+| Master file permission error | Close Master_DATA.xlsx in Excel before running |
+| Page loads but section missing | Increase `time.sleep()` values in `scraper.navigate_to_page()` |
+| Wrong values being written | Check `tracking_state.json` — manually correct if needed |
+
+### Logs
+
+Every run writes a timestamped log to `logs/`. Set `DEBUG_MODE = True` in config for full detail.
 
 ---
 
-## 🎯 Key Features
+## Scheduling (Windows Task Scheduler)
 
-✅ **Intelligent Data Management**
-- Automatic forward-filling when data unchanged
-- Historical backfilling when data corrected
-- Change detection for both date and values
-
-✅ **Robust Web Scraping**
-- Multiple fallback methods for data extraction
-- Fund name verification
-- Automatic retry logic
-
-✅ **Data Integrity**
-- Validation of duration ranges (0.1 - 30 years)
-- Date format parsing from multiple formats
-- Tracking state persistence
-
-✅ **Professional Outputs**
-- Timestamped files prevent overwrites
-- "latest" folder for easy access
-- ZIP archives for distribution
-- Comprehensive metadata
+For unattended daily runs:
+1. Set `HEADLESS_MODE = True` in `config.py`
+2. Create a Task Scheduler job:
+   - **Program:** `python`
+   - **Arguments:** `D:\Projects\SIMBA-RUNBOOKS\VANGUARDDD_RunBook\orchestrator.py`
+   - **Start in:** `D:\Projects\SIMBA-RUNBOOKS\VANGUARDDD_RunBook`
+   - **Trigger:** Daily, weekdays, e.g. 08:00 AM
 
 ---
 
-## 📝 Configuration Options
+## Maintenance
 
-### Key Settings in [config.py](D:\Projects\SIMBA-RUNBOOKS\VANGUARDDD_RunBook\config.py)
+### If Vanguard changes their HTML
 
-```python
-# Browser
-HEADLESS_MODE = True          # Run without visible browser
-WAIT_TIMEOUT = 20             # Page load timeout (seconds)
-
-# Data Management
-ENABLE_FORWARD_FILL = True    # Forward-fill unchanged data
-ENABLE_BACKFILL = True        # Backfill when data changes
-MAX_BACKFILL_DAYS = 365       # Safety limit for backfilling
-
-# Validation
-MIN_DURATION_VALUE = 0.1      # Minimum valid duration (years)
-MAX_DURATION_VALUE = 30.0     # Maximum valid duration (years)
-REQUIRE_ALL_PRODUCTS = True   # Fail if any product fails
-```
-
----
-
-## 🔄 Workflow
-
-```
-┌─────────────────┐
-│  orchestrator   │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│    scraper      │──→ Navigate to 3 Vanguard ETF URLs
-└────────┬────────┘    Extract "as of" date + Average Duration
-         │
-         ▼
-┌─────────────────┐
-│    parser       │──→ Load tracking state + master data
-└────────┬────────┘    Compare scraped vs last known
-         │              Apply forward-fill or backfill
-         │              Save updated master + tracking state
-         ▼
-┌─────────────────┐
-│ file_generator  │──→ Create DATA.xlsx
-└────────┬────────┘    Create META.xlsx
-         │              Create ZIP archive
-         │              Copy to "latest" folder
-         ▼
-     [Complete]
-```
-
----
-
-## 👥 Credits
-
-**Architecture based on:**
-- CHEF_NOVARTIS (PDF scraping pipeline)
-- SSGADD (Cumulative data management)
-
-**Developer:** AfricaAI
-**Date:** January 2026
-**Dataset:** VANGUARDDD
-
----
-
-## 📚 Related Files
-
-- [information.txt](D:\Projects\SIMBA-RUNBOOKS\VANGUARDDD_RunBook\project_information\information.txt) - Original requirements
-- [VANGUARDDD_RunBook.docx](D:\Projects\SIMBA-RUNBOOKS\VANGUARDDD_RunBook\project_information\VANGUARDDD_RunBook.docx) - Manual runbook
-- [Sample HTML outputs](D:\Projects\SIMBA-RUNBOOKS\VANGUARDDD_RunBook\project_information\sample1.txt) - For selector verification
-
----
-
-## 🛠️ Maintenance
-
-### Updating CSS Selectors
-
-If Vanguard changes their HTML structure, update selectors in [config.py:44-65](D:\Projects\SIMBA-RUNBOOKS\VANGUARDDD_RunBook\config.py#L44-L65):
-
+Update selectors in `config.py` `SELECTORS` dict:
 ```python
 SELECTORS = {
-    'portfolio_section': 'section#portfolio-composition',
-    'date_text': 'p.date.rps-paragraph-two',
+    'portfolio_section':   'section#portfolio-composition',
+    'date_text':           'p.date.rps-paragraph-two',
     'symbol_avg_duration': 'td[data-rpa-tag-id="symbolAvgDuration"]',
-    # ... etc
+    # fallback table scan
+    'table_rows':          'tr.fixed-income',
+    'row_header':          'td.row-header',
+    'average_duration_label': 'Average duration',
 }
 ```
 
-### Adding New ETFs
+### Adding a new ETF
 
-1. Add URL to `URLS` dict in config.py
-2. Add column definition to `OUTPUT_COLUMNS` list
-3. Update master data file structure
+1. Add to `URLS` dict in `config.py`
+2. Append entry to `OUTPUT_COLUMNS` list in `config.py`
+3. Add corresponding column to `Master_DATA.xlsx` (row 0: code, row 1: description, historical values)
+4. Add the new code key to `tracking_state.json` `durations` dict
 
 ---
 
-**Status:** ✅ Production Ready
-**Last Updated:** 2026-01-27
+## Credits
+
+**Architecture:** Based on CHEF_NOVARTIS (PDF scraping) and SSGADD (cumulative data management) patterns.
+**Developer:** AfricaAI
+**Dataset:** VANGUARDDD
+**Status:** Production ready
+**Last updated:** 2026-08-25

@@ -1,0 +1,92 @@
+2026-08-25 09:11:30 - root - INFO - ======================================================================
+2026-08-25 09:11:30 - root - INFO - Logging initialized
+2026-08-25 09:11:30 - root - INFO - Log file: ./logs\vanguarddd_20260825_091128.log
+2026-08-25 09:11:30 - root - INFO - Log level: DEBUG
+2026-08-25 09:11:30 - root - INFO - ======================================================================
+2026-08-25 09:11:30 - asyncio - DEBUG - Using proactor: IocpProactor
+2026-08-25 09:11:33 - scraper - INFO - Playwright browser initialized
+2026-08-25 09:11:33 - scraper - INFO - 
+======================================================================
+2026-08-25 09:11:33 - scraper - INFO - Scraping VCIT: https://investor.vanguard.com/investment-products/etfs/profile/vcit
+2026-08-25 09:11:33 - scraper - INFO - ======================================================================
+2026-08-25 09:11:33 - scraper - INFO - Loading https://investor.vanguard.com/investment-products/etfs/profile/vcit
+2026-08-25 09:11:46 - scraper - INFO - Navigating to https://investor.vanguard.com/investment-products/etfs/profile/vcit#portfolio-composition
+2026-08-25 09:11:53 - scraper - INFO - Page loaded successfully
+2026-08-25 09:11:55 - scraper - INFO - Scrolled to Portfolio Composition section
+2026-08-25 09:11:55 - scraper - INFO - Extracting 'as of' date...
+2026-08-25 09:11:55 - scraper - INFO - Found 'as of' date: 07/31/2026
+2026-08-25 09:11:55 - scraper - INFO - Extracting Average Duration for VCIT...
+2026-08-25 09:11:55 - scraper - INFO - Found Average Duration (RPA tag): 6.0 years
+2026-08-25 09:11:55 - scraper - INFO - Successfully scraped VCIT
+2026-08-25 09:11:55 - scraper - INFO - 
+======================================================================
+2026-08-25 09:11:55 - scraper - INFO - Scraping VCSH: https://investor.vanguard.com/investment-products/etfs/profile/vcsh
+2026-08-25 09:11:55 - scraper - INFO - ======================================================================
+2026-08-25 09:11:55 - scraper - INFO - Loading https://investor.vanguard.com/investment-products/etfs/profile/vcsh
+2026-08-25 09:12:06 - scraper - INFO - Navigating to https://investor.vanguard.com/investment-products/etfs/profile/vcsh#portfolio-composition
+2026-08-25 09:12:12 - scraper - INFO - Page loaded successfully
+2026-08-25 09:12:14 - scraper - INFO - Scrolled to Portfolio Composition section
+2026-08-25 09:12:14 - scraper - INFO - Extracting 'as of' date...
+2026-08-25 09:12:14 - scraper - INFO - Found 'as of' date: 07/31/2026
+2026-08-25 09:12:14 - scraper - INFO - Extracting Average Duration for VCSH...
+2026-08-25 09:12:14 - scraper - INFO - Found Average Duration (RPA tag): 2.7 years
+2026-08-25 09:12:14 - scraper - INFO - Successfully scraped VCSH
+2026-08-25 09:12:14 - scraper - INFO - 
+======================================================================
+2026-08-25 09:12:14 - scraper - INFO - Scraping VCLT: https://investor.vanguard.com/investment-products/etfs/profile/vclt
+2026-08-25 09:12:14 - scraper - INFO - ======================================================================
+2026-08-25 09:12:14 - scraper - INFO - Loading https://investor.vanguard.com/investment-products/etfs/profile/vclt
+2026-08-25 09:12:25 - scraper - INFO - Navigating to https://investor.vanguard.com/investment-products/etfs/profile/vclt#portfolio-composition
+2026-08-25 09:12:32 - scraper - INFO - Page loaded successfully
+2026-08-25 09:12:34 - scraper - INFO - Scrolled to Portfolio Composition section
+2026-08-25 09:12:34 - scraper - INFO - Extracting 'as of' date...
+2026-08-25 09:12:34 - scraper - INFO - Found 'as of' date: 07/31/2026
+2026-08-25 09:12:34 - scraper - INFO - Extracting Average Duration for VCLT...
+2026-08-25 09:12:34 - scraper - INFO - Found Average Duration (RPA tag): 11.8 years
+2026-08-25 09:12:34 - scraper - INFO - Successfully scraped VCLT
+2026-08-25 09:12:34 - scraper - INFO - Successfully scraped 3 products
+2026-08-25 09:12:35 - scraper - INFO - Browser closed
+2026-08-25 09:12:35 - __main__ - INFO - Successfully scraped 3 products
+2026-08-25 09:12:35 - parser - INFO - Parsing scraped data...
+2026-08-25 09:12:35 - parser - INFO - Parsed 'as of' date: 2026-07-31
+2026-08-25 09:12:35 - parser - INFO - VCIT: 6.0 years
+2026-08-25 09:12:35 - parser - INFO - VCSH: 2.7 years
+2026-08-25 09:12:35 - parser - INFO - VCLT: 11.8 years
+2026-08-25 09:12:35 - parser - INFO - Loaded tracking state: as_of=2026-07-31 00:00:00, durations={'VANGUARDDD.INTERMEDIATETERMCORPORATEBONDETF.AVGDURATION.B': 6.0, 'VANGUARDDD.SHORTTERMCORPORATEBONDETF.AVGDURATION.B': 2.7, 'VANGUARDDD.LONGTERMCORPORATEBONDETF.AVGDURATION.B': 11.8}
+2026-08-25 09:12:36 - parser - INFO - Loaded master data: 652 rows
+2026-08-25 09:12:36 - parser - INFO - 
+======================================================================
+2026-08-25 09:12:36 - parser - INFO - DECISION LOGIC
+2026-08-25 09:12:36 - parser - INFO - ======================================================================
+2026-08-25 09:12:36 - parser - INFO - Today: 2026-08-25
+2026-08-25 09:12:36 - parser - INFO - Scraped 'as of' date: 2026-07-31
+2026-08-25 09:12:36 - parser - INFO - Scraped durations: {'VANGUARDDD.INTERMEDIATETERMCORPORATEBONDETF.AVGDURATION.B': 6.0, 'VANGUARDDD.SHORTTERMCORPORATEBONDETF.AVGDURATION.B': 2.7, 'VANGUARDDD.LONGTERMCORPORATEBONDETF.AVGDURATION.B': 11.8}
+2026-08-25 09:12:36 - parser - INFO - Last 'as of' date: 2026-07-31
+2026-08-25 09:12:36 - parser - INFO - Last durations: {'VANGUARDDD.INTERMEDIATETERMCORPORATEBONDETF.AVGDURATION.B': 6.0, 'VANGUARDDD.SHORTTERMCORPORATEBONDETF.AVGDURATION.B': 2.7, 'VANGUARDDD.LONGTERMCORPORATEBONDETF.AVGDURATION.B': 11.8}
+2026-08-25 09:12:36 - parser - INFO - Decision: FORWARD-FILL (no changes)
+2026-08-25 09:12:36 - parser - INFO - SCENARIO 1: FORWARD-FILL (no change detected)
+2026-08-25 09:12:36 - parser - INFO - Added row for 2026-08-25: [6.0, 2.7, 11.8]
+2026-08-25 09:12:36 - parser - INFO - Saved master data: 653 rows
+2026-08-25 09:12:36 - parser - INFO - Saved tracking state to D:\Projects\SIMBA-RUNBOOKS\VANGUARDDD_RunBook\Master\tracking_state.json
+2026-08-25 09:12:36 - parser - INFO - ======================================================================
+
+2026-08-25 09:12:36 - __main__ - INFO - Successfully updated master with 653 rows
+2026-08-25 09:12:36 - file_generator - INFO - 
+======================================================================
+2026-08-25 09:12:36 - file_generator - INFO - GENERATING OUTPUT FILES
+2026-08-25 09:12:36 - file_generator - INFO - ======================================================================
+2026-08-25 09:12:36 - file_generator - INFO - Creating DATA file...
+2026-08-25 09:12:37 - file_generator - INFO - Created DATA file: VANGUARDDD_DATA_20260825_091128.xlsx
+2026-08-25 09:12:37 - file_generator - INFO - Creating META file...
+2026-08-25 09:12:37 - file_generator - INFO - Created META file: VANGUARDDD_META_20260825_091128.xlsx
+2026-08-25 09:12:37 - file_generator - INFO - Creating ZIP file...
+2026-08-25 09:12:37 - file_generator - INFO - Added to ZIP: VANGUARDDD_DATA_20260825_091128.xlsx
+2026-08-25 09:12:37 - file_generator - INFO - Added to ZIP: VANGUARDDD_META_20260825_091128.xlsx
+2026-08-25 09:12:37 - file_generator - INFO - Created ZIP file: VANGUARDDD_20260825_091128.zip
+2026-08-25 09:12:37 - file_generator - INFO - Copying files to 'latest' directory...
+2026-08-25 09:12:37 - file_generator - INFO - Copied data_file: VANGUARDDD_DATA_20260825_091128.xlsx
+2026-08-25 09:12:37 - file_generator - INFO - Copied meta_file: VANGUARDDD_META_20260825_091128.xlsx
+2026-08-25 09:12:37 - file_generator - INFO - Copied zip_file: VANGUARDDD_20260825_091128.zip
+2026-08-25 09:12:37 - file_generator - INFO - ======================================================================
+
+2026-08-25 09:12:37 - __main__ - INFO - Orchestrator completed successfully

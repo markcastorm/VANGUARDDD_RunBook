@@ -1,14 +1,11 @@
 # VANGUARDDD RunBook Dependencies
 
-# Web scraping
-selenium>=4.0.0
+# Browser automation (replaces Selenium — do not use selenium or undetected-chromedriver)
+playwright>=1.40.0
+playwright-stealth>=1.0.0
 
 # Data processing
 pandas>=2.0.0
 openpyxl>=3.0.0
 
-# Date/time utilities (built-in, but listed for reference)
-# datetime
-# json
-# os
-# logging
+# After installing, run: playwright install chromium

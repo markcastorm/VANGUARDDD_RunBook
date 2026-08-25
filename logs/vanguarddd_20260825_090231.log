@@ -1,0 +1,48 @@
+2026-08-25 09:02:31 - root - INFO - ======================================================================
+2026-08-25 09:02:31 - root - INFO - Logging initialized
+2026-08-25 09:02:31 - root - INFO - Log file: ./logs\vanguarddd_20260825_090231.log
+2026-08-25 09:02:31 - root - INFO - Log level: DEBUG
+2026-08-25 09:02:31 - root - INFO - ======================================================================
+2026-08-25 09:02:31 - asyncio - DEBUG - Using proactor: IocpProactor
+2026-08-25 09:02:35 - __main__ - INFO - Playwright browser initialized
+2026-08-25 09:02:35 - __main__ - INFO - 
+======================================================================
+2026-08-25 09:02:35 - __main__ - INFO - Scraping VCIT: https://investor.vanguard.com/investment-products/etfs/profile/vcit
+2026-08-25 09:02:35 - __main__ - INFO - ======================================================================
+2026-08-25 09:02:35 - __main__ - INFO - Loading https://investor.vanguard.com/investment-products/etfs/profile/vcit
+2026-08-25 09:02:50 - __main__ - INFO - Navigating to https://investor.vanguard.com/investment-products/etfs/profile/vcit#portfolio-composition
+2026-08-25 09:02:56 - __main__ - INFO - Page loaded successfully
+2026-08-25 09:02:59 - __main__ - INFO - Scrolled to Portfolio Composition section
+2026-08-25 09:02:59 - __main__ - INFO - Extracting 'as of' date...
+2026-08-25 09:02:59 - __main__ - INFO - Found 'as of' date: 07/31/2026
+2026-08-25 09:02:59 - __main__ - INFO - Extracting Average Duration for VCIT...
+2026-08-25 09:02:59 - __main__ - INFO - Found Average Duration (RPA tag): 6.0 years
+2026-08-25 09:02:59 - __main__ - INFO - Successfully scraped VCIT
+2026-08-25 09:02:59 - __main__ - INFO - 
+======================================================================
+2026-08-25 09:02:59 - __main__ - INFO - Scraping VCSH: https://investor.vanguard.com/investment-products/etfs/profile/vcsh
+2026-08-25 09:02:59 - __main__ - INFO - ======================================================================
+2026-08-25 09:02:59 - __main__ - INFO - Loading https://investor.vanguard.com/investment-products/etfs/profile/vcsh
+2026-08-25 09:03:10 - __main__ - INFO - Navigating to https://investor.vanguard.com/investment-products/etfs/profile/vcsh#portfolio-composition
+2026-08-25 09:03:17 - __main__ - INFO - Page loaded successfully
+2026-08-25 09:03:19 - __main__ - INFO - Scrolled to Portfolio Composition section
+2026-08-25 09:03:19 - __main__ - INFO - Extracting 'as of' date...
+2026-08-25 09:03:19 - __main__ - INFO - Found 'as of' date: 07/31/2026
+2026-08-25 09:03:19 - __main__ - INFO - Extracting Average Duration for VCSH...
+2026-08-25 09:03:19 - __main__ - INFO - Found Average Duration (RPA tag): 2.7 years
+2026-08-25 09:03:19 - __main__ - INFO - Successfully scraped VCSH
+2026-08-25 09:03:19 - __main__ - INFO - 
+======================================================================
+2026-08-25 09:03:19 - __main__ - INFO - Scraping VCLT: https://investor.vanguard.com/investment-products/etfs/profile/vclt
+2026-08-25 09:03:19 - __main__ - INFO - ======================================================================
+2026-08-25 09:03:19 - __main__ - INFO - Loading https://investor.vanguard.com/investment-products/etfs/profile/vclt
+2026-08-25 09:03:31 - __main__ - INFO - Navigating to https://investor.vanguard.com/investment-products/etfs/profile/vclt#portfolio-composition
+2026-08-25 09:03:37 - __main__ - INFO - Page loaded successfully
+2026-08-25 09:03:39 - __main__ - INFO - Scrolled to Portfolio Composition section
+2026-08-25 09:03:39 - __main__ - INFO - Extracting 'as of' date...
+2026-08-25 09:03:39 - __main__ - INFO - Found 'as of' date: 07/31/2026
+2026-08-25 09:03:39 - __main__ - INFO - Extracting Average Duration for VCLT...
+2026-08-25 09:03:39 - __main__ - INFO - Found Average Duration (RPA tag): 11.8 years
+2026-08-25 09:03:39 - __main__ - INFO - Successfully scraped VCLT
+2026-08-25 09:03:39 - __main__ - INFO - Successfully scraped 3 products
+2026-08-25 09:03:41 - __main__ - INFO - Browser closed

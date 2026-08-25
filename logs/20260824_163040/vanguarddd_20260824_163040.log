@@ -1,0 +1,49 @@
+2026-08-24 16:30:40 - root - INFO - ======================================================================
+2026-08-24 16:30:40 - root - INFO - Logging initialized
+2026-08-24 16:30:40 - root - INFO - Log file: ./logs\20260824_163040\vanguarddd_20260824_163040.log
+2026-08-24 16:30:40 - root - INFO - Log level: DEBUG
+2026-08-24 16:30:40 - root - INFO - ======================================================================
+2026-08-24 16:30:40 - undetected_chromedriver.patcher - DEBUG - getting release number from /last-known-good-versions-with-downloads.json
+2026-08-24 16:30:41 - undetected_chromedriver.patcher - DEBUG - downloading from https://storage.googleapis.com/chrome-for-testing-public/152.0.7977.54/win32/chromedriver-win32.zip
+2026-08-24 16:30:42 - undetected_chromedriver.patcher - DEBUG - unzipping C:\Users\MARKCA~1\AppData\Local\Temp\tmpt2az_pxc
+2026-08-24 16:30:42 - undetected_chromedriver.patcher - INFO - patching driver executable C:\Users\Mark Castro\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-08-24 16:30:43 - undetected_chromedriver.patcher - DEBUG - found block:
+b'{window.cdc_adoQpoasnfa76pfcZLmcfl_Array = window.Array;window.cdc_adoQpoasnfa76pfcZLmcfl_Object = window.Object;window.cdc_adoQpoasnfa76pfcZLmcfl_Promise = window.Promise;window.cdc_adoQpoasnfa76pfcZLmcfl_Proxy = window.Proxy;window.cdc_adoQpoasnfa76pfcZLmcfl_Symbol = window.Symbol;window.cdc_adoQpoasnfa76pfcZLmcfl_JSON = window.JSON;window.cdc_adoQpoasnfa76pfcZLmcfl_Window = window.Window;}'
+replacing with:
+b'{console.log("undetected chromedriver 1337!")}                                                                                                                                                                                                                                                                                                                                                             '
+2026-08-24 16:30:43 - undetected_chromedriver.patcher - DEBUG - patching took us 1.20 seconds
+2026-08-24 16:30:44 - selenium.webdriver.common.driver_finder - DEBUG - Skipping Selenium Manager; path to chrome driver specified in Service class: C:\Users\Mark Castro\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2026-08-24 16:30:46 - selenium.webdriver.common.service - DEBUG - Started executable: `C:\Users\Mark Castro\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe` in a child process with pid: 14944 using 0 to output -3
+2026-08-24 16:30:46 - selenium.webdriver.remote.remote_connection - DEBUG - POST http://localhost:60028/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'goog:chromeOptions': {'extensions': [], 'binary': 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'args': ['--window-size=1920,1080', '--no-sandbox', '--disable-dev-shm-usage', '--remote-debugging-host=127.0.0.1', '--remote-debugging-port=60027', '--user-data-dir=C:\\Users\\MARKCA~1\\AppData\\Local\\Temp\\tmpie5vioj0', '--lang=en-US', '--no-default-browser-check', '--no-first-run', '--no-sandbox', '--test-type', '--headless=new', '--window-size=1920,1080', '--start-maximized', '--no-sandbox', '--log-level=0'], 'debuggerAddress': '127.0.0.1:60027'}}}}
+2026-08-24 16:30:46 - urllib3.connectionpool - DEBUG - Starting new HTTP connection (1): localhost:60028
+2026-08-24 16:30:46 - urllib3.connectionpool - DEBUG - http://localhost:60028 "POST /session HTTP/1.1" 500 0
+2026-08-24 16:30:46 - selenium.webdriver.remote.remote_connection - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: cannot connect to chrome at 127.0.0.1:60027\nfrom session not created: This version of ChromeDriver only supports Chrome version 152\nCurrent browser version is 151.0.7922.173","stacktrace":"\tundetected_chromedriver!GetHandleVerifier [0x611403+4fe3]\n\tundetected_chromedriver!(No symbol) [0x571684]\n\tundetected_chromedriver!(No symbol) [0x40bf90]\n\tundetected_chromedriver!(No symbol) [0x448902]\n\tundetected_chromedriver!(No symbol) [0x44792c]\n\tundetected_chromedriver!(No symbol) [0x43db45]\n\tundetected_chromedriver!(No symbol) [0x43d966]\n\tundetected_chromedriver!(No symbol) [0x4845ef]\n\tundetected_chromedriver!(No symbol) [0x483e07]\n\tundetected_chromedriver!(No symbol) [0x478366]\n\tundetected_chromedriver!(No symbol) [0x44b4a9]\n\tundetected_chromedriver!(No symbol) [0x44c1b4]\n\tundetected_chromedriver!GetHandleVerifier [0x9964aa+38a08a]\n\tundetected_chromedriver!GetHandleVerifier [0x9bd182+3b0d62]\n\tundetected_chromedriver!GetHandleVerifier [0x6ded42+d2922]\n\tundetected_chromedriver!GetHandleVerifier [0x6e4d33+d8913]\n\tundetected_chromedriver!(No symbol) [0x57c53d]\n\tundetected_chromedriver!(No symbol) [0x579348]\n\tundetected_chromedriver!(No symbol) [0x5794f5]\n\tundetected_chromedriver!(No symbol) [0x568797]\n\tKERNEL32!BaseThreadInitThunk [0x75f36839+19]\n\tntdll!RtlGetFullPathName_UEx [0x77c0906f+4bf]\n\tntdll!RtlGetFullPathName_UEx [0x77c0903d+48d]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1473', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-08-24 16:30:46 - selenium.webdriver.remote.remote_connection - DEBUG - Finished Request
+2026-08-24 16:30:47 - __main__ - ERROR - Fatal scraping error: Message: session not created: cannot connect to chrome at 127.0.0.1:60027
+from session not created: This version of ChromeDriver only supports Chrome version 152
+Current browser version is 151.0.7922.173
+Stacktrace:
+	undetected_chromedriver!GetHandleVerifier [0x611403+4fe3]
+	undetected_chromedriver!(No symbol) [0x571684]
+	undetected_chromedriver!(No symbol) [0x40bf90]
+	undetected_chromedriver!(No symbol) [0x448902]
+	undetected_chromedriver!(No symbol) [0x44792c]
+	undetected_chromedriver!(No symbol) [0x43db45]
+	undetected_chromedriver!(No symbol) [0x43d966]
+	undetected_chromedriver!(No symbol) [0x4845ef]
+	undetected_chromedriver!(No symbol) [0x483e07]
+	undetected_chromedriver!(No symbol) [0x478366]
+	undetected_chromedriver!(No symbol) [0x44b4a9]
+	undetected_chromedriver!(No symbol) [0x44c1b4]
+	undetected_chromedriver!GetHandleVerifier [0x9964aa+38a08a]
+	undetected_chromedriver!GetHandleVerifier [0x9bd182+3b0d62]
+	undetected_chromedriver!GetHandleVerifier [0x6ded42+d2922]
+	undetected_chromedriver!GetHandleVerifier [0x6e4d33+d8913]
+	undetected_chromedriver!(No symbol) [0x57c53d]
+	undetected_chromedriver!(No symbol) [0x579348]
+	undetected_chromedriver!(No symbol) [0x5794f5]
+	undetected_chromedriver!(No symbol) [0x568797]
+	KERNEL32!BaseThreadInitThunk [0x75f36839+19]
+	ntdll!RtlGetFullPathName_UEx [0x77c0906f+4bf]
+	ntdll!RtlGetFullPathName_UEx [0x77c0903d+48d]
+

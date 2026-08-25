@@ -11,9 +11,8 @@ from datetime import datetime
 # Base URL pattern — tickers are appended as lowercase by the scraper.
 # Using /overview/ ensures the Angular app lands on the correct tab and
 # the Portfolio Composition section renders consistently across all tickers.
-VANGUARD_BASE_URL = 'https://investor.vanguard.com/etf/profile/overview'
+VANGUARD_BASE_URL = 'https://investor.vanguard.com/investment-products/etfs/profile'
 
-# Kept for backwards-compatibility references; scraper builds URLs dynamically.
 URLS = {
     'VCIT': f'{VANGUARD_BASE_URL}/vcit',
     'VCSH': f'{VANGUARD_BASE_URL}/vcsh',
@@ -33,7 +32,7 @@ CURRENCY = 'USD'
 RUN_TIMESTAMP = datetime.now().strftime('%Y%m%d_%H%M%S')
 
 # Use timestamped folders to avoid conflicts between runs
-USE_TIMESTAMPED_FOLDERS = True
+USE_TIMESTAMPED_FOLDERS = False
 
 # =============================================================================
 # CUMULATIVE DATA CONFIGURATION
@@ -183,7 +182,7 @@ LOG_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
 # BROWSER CONFIGURATION
 # =============================================================================
 
-HEADLESS_MODE = True
+HEADLESS_MODE = False
 DEBUG_MODE = True
 
 # Timeouts (seconds) — used with WebDriverWait; no bare time.sleep() in scraper
